@@ -1,0 +1,82 @@
+.legal-content {
+  padding-top: 120px;
+  padding-bottom: 60px;
+}
+
+.legal-content .container {
+  max-width: 800px;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.legal-content h1 {
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.legal-content section {
+  margin: 2rem 0;
+}
+
+.legal-content h2 {
+  color: var(--primary-color);
+  margin: 1.5rem 0 1rem;
+}
+
+.legal-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.legal-content ul {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.legal-content li {
+  margin-bottom: 0.5rem;
+}
+
+.terms {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.terms h1 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.effective-date {
+    color: #666;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.terms section {
+    margin: 2rem 0;
+}
+
+.terms h2 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.terms p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.terms a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}

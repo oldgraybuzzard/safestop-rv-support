@@ -1,0 +1,16 @@
+{
+  "name": "safestop_rv_support-website",
+  "version": "1.0.0",
+  "description": "A support website for users to gain understanding and answers about the app.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "live-server src --port=8080 --entry-file=index.html",
+    "build": "echo 'Build process not defined yet.'"
+  },
+  "author": "Kendall Felder",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
