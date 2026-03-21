@@ -3,35 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SafeStop RV</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <title>Contact Us</title>
+    <link rel="stylesheet" href="../assets/css/contact.css">
+    <!-- Add reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lf1ma0qAAAAAL59kg6ynNjtzbJ46DQ1JnwExBK2"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2734295313191806"
+     crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <!-- Include header component -->
-        <!-- Add header.html content here -->
-    </header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="SafeStop RV Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <main>
-        <h1>Contact Us</h1>
-        <p>If you have any questions or need support, please fill out the form below:</p>
-        <form action="#" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <main class="contact-content">
+        <div class="container">
+            <h1>Contact Support</h1>
+            <p class="contact-intro">Have a question or need assistance? We're here to help!</p>
+            
+            <div id="formError" class="error-banner" style="display: none;"></div>
+            
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/mgvvpjpl" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required 
+                           minlength="2" maxlength="100"
+                           pattern="[A-Za-z\s]+"
+                           title="Please enter a valid name (letters and spaces only)">
+                    <div class="error-message" id="nameError"></div>
+                </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required
+                           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                           title="Please enter a valid email address">
+                    <div class="error-message" id="emailError"></div>
+                </div>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Please select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="technical">Technical Support</option>
+                        <option value="billing">Billing Question</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                    <div class="error-message" id="subjectError"></div>
+                </div>
 
-            <button type="submit">Send Message</button>
-        </form>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required
+                            minlength="10" maxlength="1000"
+                            rows="5"></textarea>
+                    <div class="char-counter">0 / 1000</div>
+                    <div class="error-message" id="messageError"></div>
+                </div>
+
+                <!-- Anti-spam protection -->
+                <input type="text" name="_gotcha" style="display: none;">
+                
+                <!-- Redirect after submission -->
+                <input type="hidden" name="_next" value="https://rvsafestop.com/pages/contact.html?submitted=true">
+
+                <button type="submit" class="submit-button" id="submitButton">
+                    <span class="button-text">Send Message</span>
+                    <span class="button-loader" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                </button>
+            </form>
+
+            <div id="successMessage" class="success-message" style="display: none;">
+                Thank you for your message! We'll get back to you soon.
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <!-- Include footer component -->
-        <!-- Add footer.html content here -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024–2026 SafeStop RV. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Add form handling script -->
+    <script>
+        // Show success message if URL has submitted parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('submitted') === 'true') {
+                document.getElementById('contactForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        });
+
+        // Add input validation styling
+        function addValidationListeners(input) {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+                const errorDiv = document.getElementById(this.id + 'Error');
+                if (errorDiv) errorDiv.textContent = '';
+            });
+        }
+
+        // Initialize form
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const messageInput = document.getElementById('message');
+            const charCounter = messageInput.parentElement.querySelector('.char-counter');
+            
+            // Add validation listeners to all inputs
+            form.querySelectorAll('input, select, textarea').forEach(addValidationListeners);
+            
+            // Character counter for message
+            messageInput.addEventListener('input', function() {
+                const remaining = this.value.length;
+                charCounter.textContent = `${remaining} / 1000`;
+            });
+
+            // Handle form submission
+            form.addEventListener('submit', function(event) {
+                // Basic validation
+                let isValid = true;
+                
+                // Name validation
+                const name = form.name.value.trim();
+                if (!/^[A-Za-z\s]+$/.test(name)) {
+                    document.getElementById('nameError').textContent = 'Please enter a valid name';
+                    form.name.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Email validation
+                const email = form.email.value.trim();
+                if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+                    document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                    form.email.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Subject validation
+                if (!form.subject.value) {
+                    document.getElementById('subjectError').textContent = 'Please select a subject';
+                    form.subject.classList.add('error');
+                    isValid = false;
+                }
+                
+                // Message validation
+                const message = form.message.value.trim();
+                if (message.length < 10) {
+                    document.getElementById('messageError').textContent = 'Message must be at least 10 characters long';
+                    form.message.classList.add('error');
+                    isValid = false;
+                }
+                
+                if (!isValid) {
+                    event.preventDefault();
+                    // Scroll to the first error
+                    const firstError = form.querySelector('.error, .error-message:not(:empty)');
+                    if (firstError) {
+                        firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return;
+                }
+
+                // Show loading state
+                const submitButton = form.querySelector('#submitButton');
+                const buttonText = submitButton.querySelector('.button-text');
+                const buttonLoader = submitButton.querySelector('.button-loader');
+                
+                buttonText.style.display = 'none';
+                buttonLoader.style.display = 'inline-block';
+                submitButton.disabled = true;
+            });
+        });
+    </script>
+
+    <style>
+        .error-banner {
+            background-color: #ffebee;
+            color: #c62828;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            border: 1px solid #ef9a9a;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .error-message {
+            color: #c62828;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            min-height: 1.25rem;
+        }
+
+        input.error,
+        select.error,
+        textarea.error {
+            border-color: #c62828;
+        }
+
+        .char-counter {
+            color: #666;
+            font-size: 0.875rem;
+            text-align: right;
+            margin-top: 0.25rem;
+        }
+
+        .submit-button {
+            position: relative;
+            min-width: 150px;
+        }
+
+        .button-loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .success-message {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 4px;
+            border: 1px solid #a5d6a7;
+            margin-top: 2rem;
+        }
+    </style>
 </body>
 </html>

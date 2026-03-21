@@ -3,14 +3,18 @@
   "version": "1.0.0",
   "description": "A support website for users to gain understanding and answers about the app.",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start": "live-server src --port=8080 --entry-file=index.html",
     "build": "echo 'Build process not defined yet.'"
   },
   "author": "Kendall Felder",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "netlify-cli": "^24.4.0"
+  },
   "devDependencies": {
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.0"
   }
 }

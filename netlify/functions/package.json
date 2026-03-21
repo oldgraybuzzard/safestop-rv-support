@@ -1,0 +1,9 @@
+{
+  "name": "safestoprv-functions",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "node-fetch": "^3.3.2"
+  }
+} 
