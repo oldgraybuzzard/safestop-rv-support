@@ -1,4 +1,5 @@
 [build]
+  command = ""
   publish = "src"
   functions = "netlify/functions"
 
