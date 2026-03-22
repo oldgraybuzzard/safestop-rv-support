@@ -385,6 +385,11 @@ main {
     width: auto;
 }
 
+/* Google Play badge has built-in whitespace; scale up to visually match App Store */
+.app-store-button img[src*="google-play"] {
+    height: 72px;
+}
+
 .app-store-button-small {
     display: inline-block;
     transition: transform 0.2s ease;
@@ -397,6 +402,10 @@ main {
 .app-store-button-small img {
     height: 40px;
     width: auto;
+}
+
+.app-store-button-small img[src*="google-play"] {
+    height: 60px;
 }
 
 /* App Store Info */
@@ -455,6 +464,10 @@ main {
         height: 40px;
     }
 
+    .app-store-button img[src*="google-play"] {
+        height: 60px;
+    }
+
     .app-store-section {
         margin: 2rem 1rem;
     }
@@ -471,5 +484,9 @@ main {
 
     .app-store-button img {
         height: 36px;
+    }
+
+    .app-store-button img[src*="google-play"] {
+        height: 54px;
     }
 }
