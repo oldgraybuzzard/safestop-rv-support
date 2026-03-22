@@ -361,6 +361,15 @@ main {
     transform: translateY(-5px);
 }
 
+/* Store Badges Container */
+.store-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    align-items: center;
+}
+
 /* App Store Button Styles */
 .app-store-button {
     display: inline-block;
@@ -374,6 +383,15 @@ main {
 .app-store-button img {
     height: 48px;
     width: auto;
+}
+
+.app-store-button-small {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.app-store-button-small:hover {
+    transform: scale(1.05);
 }
 
 .app-store-button-small img {
