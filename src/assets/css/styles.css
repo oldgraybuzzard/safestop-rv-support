@@ -374,8 +374,6 @@ main {
 .app-store-button {
     display: inline-flex;
     align-items: center;
-    height: 48px;
-    overflow: hidden;
     transition: transform 0.2s ease;
 }
 
@@ -388,18 +386,9 @@ main {
     width: auto;
 }
 
-/* Google Play badge has ~50% built-in whitespace padding.
-   Scale 2x and use negative margin to crop it symmetrically. */
-.app-store-button img[src*="google-play"] {
-    height: 96px;
-    margin-top: -24px;
-}
-
 .app-store-button-small {
     display: inline-flex;
     align-items: center;
-    height: 40px;
-    overflow: hidden;
     transition: transform 0.2s ease;
 }
 
@@ -410,11 +399,6 @@ main {
 .app-store-button-small img {
     height: 40px;
     width: auto;
-}
-
-.app-store-button-small img[src*="google-play"] {
-    height: 80px;
-    margin-top: -20px;
 }
 
 /* App Store Info */
@@ -477,11 +461,6 @@ main {
         height: 40px;
     }
 
-    .app-store-button img[src*="google-play"] {
-        height: 80px;
-        margin-top: -20px;
-    }
-
     .app-store-section {
         margin: 2rem 1rem;
     }
@@ -502,10 +481,5 @@ main {
 
     .app-store-button img {
         height: 36px;
-    }
-
-    .app-store-button img[src*="google-play"] {
-        height: 72px;
-        margin-top: -18px;
     }
 }
