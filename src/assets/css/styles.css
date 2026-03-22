@@ -372,7 +372,10 @@ main {
 
 /* App Store Button Styles */
 .app-store-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    height: 48px;
+    overflow: hidden;
     transition: transform 0.2s ease;
 }
 
@@ -385,13 +388,18 @@ main {
     width: auto;
 }
 
-/* Google Play badge has built-in whitespace; scale up to visually match App Store */
+/* Google Play badge has ~50% built-in whitespace padding.
+   Scale 2x and use negative margin to crop it symmetrically. */
 .app-store-button img[src*="google-play"] {
-    height: 72px;
+    height: 96px;
+    margin-top: -24px;
 }
 
 .app-store-button-small {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    overflow: hidden;
     transition: transform 0.2s ease;
 }
 
@@ -405,7 +413,8 @@ main {
 }
 
 .app-store-button-small img[src*="google-play"] {
-    height: 60px;
+    height: 80px;
+    margin-top: -20px;
 }
 
 /* App Store Info */
@@ -460,12 +469,17 @@ main {
       grid-template-columns: 1fr;
     }
 
+    .app-store-button {
+        height: 40px;
+    }
+
     .app-store-button img {
         height: 40px;
     }
 
     .app-store-button img[src*="google-play"] {
-        height: 60px;
+        height: 80px;
+        margin-top: -20px;
     }
 
     .app-store-section {
@@ -482,11 +496,16 @@ main {
         font-size: 1.2rem;
     }
 
+    .app-store-button {
+        height: 36px;
+    }
+
     .app-store-button img {
         height: 36px;
     }
 
     .app-store-button img[src*="google-play"] {
-        height: 54px;
+        height: 72px;
+        margin-top: -18px;
     }
 }
