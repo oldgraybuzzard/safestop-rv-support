@@ -8,6 +8,18 @@
   external_node_modules = ["@notionhq/client", "node-fetch"]
 
 [[redirects]]
+  from = "/privacy"
+  to = "/pages/privacy.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/pages/privacy.html"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/pages/privacy"
   to = "/pages/privacy.html"
   status = 301
