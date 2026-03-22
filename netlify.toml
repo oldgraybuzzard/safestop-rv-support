@@ -5,4 +5,28 @@
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["@notionhq/client", "node-fetch"] 
+  external_node_modules = ["@notionhq/client", "node-fetch"]
+
+[[redirects]]
+  from = "/pages/privacy"
+  to = "/pages/privacy.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/terms"
+  to = "/pages/terms.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/faq"
+  to = "/pages/faq.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pages/contact"
+  to = "/pages/contact.html"
+  status = 301
+  force = true
